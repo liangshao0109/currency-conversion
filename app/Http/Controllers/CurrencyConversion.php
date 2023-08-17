@@ -38,9 +38,21 @@ class CurrencyConversion extends Controller
         $requestBody = $request->all();
 
         // error handling
+        if(!array_key_exists('source', $requestBody)){
+            return [
+                'msg' => 'missing source'
+            ];
+        }
+
+        if(!array_key_exists('target', $requestBody)){
+            return [
+                'msg' => 'missing target'
+            ];
+        }
+
         if(!array_key_exists('amount', $requestBody)){
             return [
-                'msg' => 'no amount'
+                'msg' => 'missing amount'
             ];
         }
 
